@@ -21,7 +21,32 @@ function SteamAvatar($apikey,$SteamID){
 	$xml = new SimpleXMLElement($xmlstr);
 	return $xml->profile[0]->avatar;
 }
-
+//Ban Checkers With API
+function SteamVacBanCheck($apikey,$SteamID){ 
+	$xmlstr = file_get_contents("https://steamid.uk/api/request.php?api=".$apikey."&player=".$SteamID."&request_type=1");
+	$xml = new SimpleXMLElement($xmlstr);
+	return $xml->profile_status[0]->vac;
+}
+function SteamBlacklistCheck($apikey,$SteamID){ 
+	$xmlstr = file_get_contents("https://steamid.uk/api/request.php?api=".$apikey."&player=".$SteamID."&request_type=1");
+	$xml = new SimpleXMLElement($xmlstr);
+	return $xml->profile_status[0]->blacklisted;
+}
+function SteamTradeBanCheck($apikey,$SteamID){ 
+	$xmlstr = file_get_contents("https://steamid.uk/api/request.php?api=".$apikey."&player=".$SteamID."&request_type=1");
+	$xml = new SimpleXMLElement($xmlstr);
+	return $xml->profile_status[0]->tradeban;
+}
+function SteamCommunityBanCheck($apikey,$SteamID){ 
+	$xmlstr = file_get_contents("https://steamid.uk/api/request.php?api=".$apikey."&player=".$SteamID."&request_type=1");
+	$xml = new SimpleXMLElement($xmlstr);
+	return $xml->profile_status[0]->communityban;
+}
+function SteamAmmountGameBans($apikey,$SteamID){ 
+	$xmlstr = file_get_contents("https://steamid.uk/api/request.php?api=".$apikey."&player=".$SteamID."&request_type=1");
+	$xml = new SimpleXMLElement($xmlstr);
+	return $xml->profile_status[0]->ammount_game_bans;
+}
 //Without API
 function SteamAccountValue($SteamID64,$currency){ //Example for currency: uk(British Pound), tr (Turkish Lira)
 	$url = file_get_contents("https://steamdb.info/calculator/".$SteamID64."/?cc=".$currency);
