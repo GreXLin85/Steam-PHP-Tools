@@ -21,6 +21,52 @@ function SteamAvatar($apikey,$SteamID){
 	$xml = new SimpleXMLElement($xmlstr);
 	return $xml->profile[0]->avatar;
 }
+function SteamFirstNameSeen($apikey,$SteamID){ 
+	$xmlstr = file_get_contents("https://steamid.uk/api/request.php?api=".$apikey."&player=".$SteamID."&request_type=1");
+	$xml = new SimpleXMLElement($xmlstr);
+	return $xml->profile[0]->firstnameseen;
+}
+function SteamName($apikey,$SteamID){ 
+	$xmlstr = file_get_contents("https://steamid.uk/api/request.php?api=".$apikey."&player=".$SteamID."&request_type=1");
+	$xml = new SimpleXMLElement($xmlstr);
+	return $xml->profile[0]->playername;
+}
+//Counters With API
+function SteamGameCount($apikey,$SteamID){ 
+	$xmlstr = file_get_contents("https://steamid.uk/api/request.php?api=".$apikey."&player=".$SteamID."&request_type=2");
+	$xml = new SimpleXMLElement($xmlstr);
+	return $xml->steamid_data[0]->game_count;
+}
+function SteamVacBannedFriends($apikey,$SteamID){ 
+	$xmlstr = file_get_contents("https://steamid.uk/api/request.php?api=".$apikey."&player=".$SteamID."&request_type=2");
+	$xml = new SimpleXMLElement($xmlstr);
+	return $xml->steamid_data[0]->vac_banned_friends;
+}
+function SteamTradeBannedFriends($apikey,$SteamID){ 
+	$xmlstr = file_get_contents("https://steamid.uk/api/request.php?api=".$apikey."&player=".$SteamID."&request_type=2");
+	$xml = new SimpleXMLElement($xmlstr);
+	return $xml->steamid_data[0]->trade_banned_friends;
+}
+function SteamTradeBannedFriends($apikey,$SteamID){ 
+	$xmlstr = file_get_contents("https://steamid.uk/api/request.php?api=".$apikey."&player=".$SteamID."&request_type=2");
+	$xml = new SimpleXMLElement($xmlstr);
+	return $xml->steamid_data[0]->trade_banned_friends;
+}
+function SteamGameBannedFriends($apikey,$SteamID){ 
+	$xmlstr = file_get_contents("https://steamid.uk/api/request.php?api=".$apikey."&player=".$SteamID."&request_type=2");
+	$xml = new SimpleXMLElement($xmlstr);
+	return $xml->steamid_data[0]->game_banned_friends;
+}
+function CommunityBannedFriends($apikey,$SteamID){ 
+	$xmlstr = file_get_contents("https://steamid.uk/api/request.php?api=".$apikey."&player=".$SteamID."&request_type=2");
+	$xml = new SimpleXMLElement($xmlstr);
+	return $xml->steamid_data[0]->community_banned_friends;
+}
+function SteamFriendCount($apikey,$SteamID){ 
+	$xmlstr = file_get_contents("https://steamid.uk/api/request.php?api=".$apikey."&player=".$SteamID."&request_type=2");
+	$xml = new SimpleXMLElement($xmlstr);
+	return $xml->steamid_data[0]->friend_count;
+}
 //Ban Checkers With API
 function SteamVacBanCheck($apikey,$SteamID){ 
 	$xmlstr = file_get_contents("https://steamid.uk/api/request.php?api=".$apikey."&player=".$SteamID."&request_type=1");
